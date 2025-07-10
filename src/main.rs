@@ -1,8 +1,3 @@
-use std::{
-    io::{Write, stdout},
-    time::{Duration, Instant},
-};
-
 use crossterm::{
     cursor,
     event::{self, Event, KeyCode},
@@ -11,33 +6,16 @@ use crossterm::{
     terminal::{ClearType, disable_raw_mode, enable_raw_mode},
 };
 use rand::seq::SliceRandom;
+use std::{
+    io::{Write, stdout},
+    time::{Duration, Instant},
+};
+mod sentences;
+use sentences::SENTENCES;
 
 fn get_random_sentence() -> &'static str {
-    let sentences = [
-        "fn map<T, U, F: Fn(T) -> U>(v: Vec<T>, f: F) -> Vec<U> { v.into_iter().map(f).collect() }",
-        "let x: Option<&str> = Some(\"hello\").as_ref().filter(|s| s.len() > 3);",
-        "match value { Ok(v) => println!(\"{}\", v), Err(e) => eprintln!(\"{}\", e) }",
-        "let arc = Arc::new(Mutex::new(HashMap::new()));",
-        "unsafe { *ptr.add(1) = 42 } // pointer arithmetic in unsafe block",
-        "let closure = |x: i32| -> i32 { x * x };",
-        "fn lifetime<'a>(s: &'a str) -> &'a str { s }",
-        "impl<T: Display> ToString for T { fn to_string(&self) -> String { format!(\"{}\", self) } }",
-        "let s = String::from(\"Rust\").chars().rev().collect::<String>();",
-        "let future = async { do_something().await?; Ok(()) };",
-        "let result = data.iter().filter(|x| x.is_some()).map(|x| x.unwrap()).collect::<Vec<_>>();",
-        "enum Result<T, E> { Ok(T), Err(E) }",
-        "let boxed: Box<dyn Fn()> = Box::new(|| println!(\"boxed closure\"));",
-        "let mut buf = [0u8; 1024]; stream.read(&mut buf)?;",
-        "trait Animal { fn speak(&self); } impl Animal for Dog { fn speak(&self) { println!(\"woof\") } }",
-        "let slice = &arr[1..=3];",
-        "if let Some(val) = maybe_val { println!(\"{}\", val); }",
-        "use std::collections::HashSet; let mut set = HashSet::new(); set.insert(\"rust\");",
-        "let sum: i32 = (1..=100).sum();",
-        "let json: serde_json::Value = serde_json::from_str(input)?;",
-    ];
-
     let mut rng = rand::thread_rng();
-    sentences.choose(&mut rng).unwrap()
+    SENTENCES.choose(&mut rng).unwrap()
 }
 
 fn main() -> std::io::Result<()> {
