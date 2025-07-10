@@ -80,5 +80,14 @@ fn main() -> std::io::Result<()> {
         }
     }
 
+    let duration = started_time.elapsed().as_secs_f64();
+    let word_count = sentence.split_whitespace().count() as f64;
+    let wpm = (word_count / duration) * 60.0;
+
+    disable_raw_mode()?;
+
+    println!("\n\ntime taken: {:.2} seconds", duration);
+    println!("wpm: {:.2}", wpm);
+
     Ok(())
 }
