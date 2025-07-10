@@ -28,8 +28,8 @@ fn main() -> std::io::Result<()> {
         stdout,
         crossterm::terminal::Clear(ClearType::All),
         cursor::MoveTo(0, 0),
-        style::Print("type the following:"),
-        style::Print(format!("{}", sentences)),
+        style::Print("type the following:\n\n"),
+        style::Print(format!("{}\n\n", sentences)),
         style::Print("Start typing:\n> ")
     )?;
 
