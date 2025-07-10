@@ -5,7 +5,6 @@ edition = "2024"
 authors = ["avhidotsol <avhimazumder5@gmail.com>"]
 description = "A fast Rust-based terminal typing test"
 repository = "https://github.com/AvhiMaz/cargo-type"
-readme = "README.md"
 keywords = ["typing", "cli", "terminal", "rust"]
 categories = ["command-line-utilities"]
 
