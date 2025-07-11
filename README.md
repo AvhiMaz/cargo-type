@@ -37,7 +37,6 @@ And once you finish typing the sentence correctly, it will show:
 ```
 Time taken: 7.32 seconds
 WPM: 42.83
-Accuracy: 97.06%
 ```
 
 ---
